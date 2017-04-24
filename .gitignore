@@ -1,0 +1,7 @@
+# Mac
+.DS_Store
+
+# LaTeX
+.aux
+.log
+.synctex.gz
