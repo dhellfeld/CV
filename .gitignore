@@ -1,7 +1,7 @@
 # Mac
-.DS_Store
+*.DS_Store
 
 # LaTeX
-.aux
-.log
-.synctex.gz
+*.aux
+*.log
+*.synctex.gz
