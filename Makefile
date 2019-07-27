@@ -6,7 +6,7 @@ RESUME = resume
 
 LATEXENGINE = pdflatex
 
-LOGDIR = logs
+BUILDDIR = build
 PDFDIR = pdfs
 
 G := $(shell tput -Txterm setaf 2)
@@ -18,22 +18,26 @@ W := $(shell tput -Txterm setaf 7)
 all: initialize $(CV) $(RESUME)
 
 $(CV): initialize
-	$(LATEXENGINE) --shell-escape --output-directory=$(LOGDIR) $(CV).tex
-	@mv $(LOGDIR)/$(CV).pdf $(PDFDIR)
+	$(LATEXENGINE) --shell-escape --output-directory=$(BUILDDIR) $(CV).tex
+	bibtex $(BUILDDIR)/$(CV).aux
+	$(LATEXENGINE) --shell-escape --output-directory=$(BUILDDIR) $(CV).tex
+	@mv $(BUILDDIR)/$(CV).pdf $(PDFDIR)
+	@osascript -e 'tell application "Preview" to close document "$(CV).pdf"' || echo "Nothing to close"
 	@open $(PDFDIR)/$(CV).pdf
 
 $(RESUME): initialize
-	$(LATEXENGINE) --shell-escape --output-directory=$(LOGDIR) $(RESUME).tex
-	@mv $(LOGDIR)/$(RESUME).pdf $(PDFDIR)
+	$(LATEXENGINE) --shell-escape --output-directory=$(BUILDDIR) $(RESUME).tex
+	@mv $(BUILDDIR)/$(RESUME).pdf $(PDFDIR)
+	@osascript -e 'tell application "Preview" to close document "$(RESUME).pdf"' || echo "Nothing to close"
 	@open $(PDFDIR)/$(RESUME).pdf
 
 initialize:
-	@mkdir -p $(LOGDIR)
+	@mkdir -p $(BUILDDIR)
 	@mkdir -p $(PDFDIR)
 
 clean:
 	@echo "Cleaning up..."
-	@rm -rf $(LOGDIR)
+	@rm -rf $(BUILDDIR)
 	@rm -rf $(PDFDIR)
 
 help:

@@ -22,59 +22,35 @@
 \setlength{\textwidth}{5.9in} % Text width of the document
 \setlength{\sectionwidth}{1.2in}
 
+\makeatletter
+\renewcommand{\@biblabel}[1]{[#1]\hfill}
+\makeatother
+
 \begin{document}
 
-% Name
-\input{sections/name}
+% Header
+\input{text/name}
 
-% Begin resume style
+% Begin resume
 \begin{resume}
 
-% Contact
-\input{sections/contact}
+% Sections
+\input{text/contact}
+%\input{text/objective}
+\input{text/education}
+\input{text/research}
+\input{text/teaching}
+\input{text/mentorship}
+\input{text/scientific_computing}
+\input{text/society_memberships}
+\input{text/awards}
+\input{text/workshops}
+\input{text/publications}
+% \input{text/talks}
+% \input{text/posters}
+% \input{text/coursework}
+\input{text/references}
 
-% Objective
-\input{sections/objective}
-
-% Education
-\input{sections/education}
-
-% Research
-\input{sections/research}
-
-% Teaching
-\input{sections/teaching}
-
- % Scientific Computing
-\input{sections/scientific_computing}
-
- % Society Memberships
-\input{sections/society_memberships}
-
- % Awards
-\input{sections/awards}
-
- % Workshops
-\input{sections/workshops}
-
- % Talks
-\input{sections/talks}
-
- % Posters
-\input{sections/posters}
-
- % Conference Proceedings
-\input{sections/conference_proceedings}
-
- % Publications
-\input{sections/publications}
-
- % Coursework
-\input{sections/coursework}
-
- % References
-\input{sections/references}
-
-% End 
+% End
 \end{resume}
 \end{document}

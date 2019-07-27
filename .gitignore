@@ -1,11 +1,5 @@
 # Mac
-*.DS_Store
-
-# LaTeX
-*.aux
-*.log
-*.synctex.gz
+.DS_Store
 
 # Build folder
 build/
-logs/
